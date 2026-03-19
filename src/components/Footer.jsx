@@ -128,8 +128,6 @@ export default function Footer() {
 
         </div>
 
-        {/* BOTTOM */}
-
         <div className="border-t border-[#1F3D12] pt-6 flex flex-col md:flex-row items-center justify-between">
 
           <p className="text-sm text-gray-400 text-center md:text-left">
