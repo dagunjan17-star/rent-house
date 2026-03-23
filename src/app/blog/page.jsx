@@ -1,45 +1,34 @@
 import React from "react";
-import { headers } from "next/headers";
 import BlogList from "./BlogList";
 
 export async function generateMetadata() {
-
-  const h = await headers();
-  const domain = h.get("host") || "localhost";
-
-  const cleanDomain = domain.replace(/^www\./, "");
-
   return {
-    title: "Rent House in Gurgaon Blog | Rental Tips & Market Insights",
+    title: "Rent House in Gurgaon Blogs | Rental Tips, Market Trends & Area Guide",
 
     description:
-      "Explore expert blogs about rent houses and flats in Gurgaon. Get rental market updates, tenant tips, legal advice and guides for finding the best rent houses in Gurgaon.",
+      "Explore expert blogs on rent house in Gurgaon. Get rental market trends, tenant tips, legal advice and guides to find the best houses for rent in Gurgaon.",
 
     keywords: [
-      "rent house in gurgaon blog",
-      "flat for rent gurgaon tips",
-      "gurgaon rental market insights",
-      "tenant guide gurgaon",
-      "rent house gurgaon tips",
-      "best areas to rent house in gurgaon"
+      "rent house in Gurgaon",
+      "house for rent Gurgaon",
+      "Gurgaon rental market trends",
+      "tenant guide Gurgaon",
+      "best areas to rent house in Gurgaon",
+      "Gurgaon rent house tips"
     ],
 
     alternates: {
-      canonical: `https://${cleanDomain}/blog`,
+      canonical: "www.houseforrentingurgaon.com/blog", // 🔥 apna real domain yaha replace karna
     },
   };
 }
 
-const page = () => {
+const Page = () => {
   return (
-
-    <div className="min-h-screen bg-gradient-to-b from-white to-[#F3FAEC]">
-
+    <div className="bg-gradient-to-b from-white to-[#F3FAEC]">
       <BlogList />
-
     </div>
-
   );
 };
 
-export default page;
+export default Page;
