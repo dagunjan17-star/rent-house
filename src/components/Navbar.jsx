@@ -33,7 +33,7 @@ const Navbar = () => {
               }}
               className="text-xl sm:text-2xl font-bold tracking-wide text-[#78C841] hover:text-[#5fae2e] transition"
             >
-              Rent House in Gurgaon
+              DA
             </Link>
 
             {/* ================= DESKTOP LINKS ================= */}

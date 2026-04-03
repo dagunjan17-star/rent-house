@@ -28,30 +28,30 @@ export default function PropertyTypePage() {
 
   const propertySectionRef = useRef(null);
 
-  useEffect(() => {
-    if (propertyType) {
-      fetchPropertiesByType(`${propertyType} BHK`, 1);
-    }
-  }, [propertyType]);
+useEffect(() => {
+  const timer = setTimeout(() => {
+    if (!propertySectionRef.current) return; // ✅ important
 
-  useEffect(() => {
-    if (properties && properties.length > 0) {
+    const yOffset = -90;
 
-      const yOffset = -90;
+    const y =
+      propertySectionRef.current.getBoundingClientRect().top +
+      window.pageYOffset +
+      yOffset;
 
-      const y =
-        propertySectionRef.current.getBoundingClientRect().top +
-        window.pageYOffset +
-        yOffset;
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  }, 100);
 
-      window.scrollTo({
-        top: y,
-        behavior: "smooth",
-      });
-
-    }
-  }, [properties]);
-
+  return () => clearTimeout(timer);
+}, [properties]);
+useEffect(() => {
+  if (propertyType) {
+    fetchPropertiesByType(`${propertyType} BHK`, 1);
+  }
+}, [propertyType]);
   /* LOADING */
 
   if (loading3) {
@@ -143,10 +143,10 @@ export default function PropertyTypePage() {
             <div
               key={property._id}
               className="bg-white rounded-xl border border-[#78C841]/10
-              shadow-sm hover:shadow-lg transition overflow-hidden"
+              shadow-sm hover:shadow-lg transition overflow-hidden md:h-[240px]"
             >
 
-              <div className="flex flex-col sm:flex-row">
+              <div className="flex flex-col sm:flex-row h-full">
 
                 {/* IMAGE */}
 
@@ -181,9 +181,29 @@ export default function PropertyTypePage() {
                     {property.title}
                   </h2>
 
-                  <p className="text-xs sm:text-sm text-gray-500 mt-1">
-                    {property.locality}
-                  </p>
+                  <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-4 h-4 text-gray-400"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243A8 8 0 1117.657 16.657z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+    />
+  </svg>
+
+  {property.locality}
+</p>
 
                   {/* INFO BAR */}
 
@@ -207,10 +227,10 @@ export default function PropertyTypePage() {
 
                   </div>
 
-                  <p className="text-xs sm:text-sm text-gray-500 mt-3 line-clamp-2">
+                  {/* <p className="text-xs sm:text-sm text-gray-500 mt-3 line-clamp-2">
                     {property.description ||
                       "Modern rent house with great connectivity and amenities."}
-                  </p>
+                  </p> */}
 
                   <div className="flex-1"></div>
 

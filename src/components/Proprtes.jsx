@@ -104,9 +104,9 @@ export default function Properties() {
               {currentProperties.map((property) => (
                 <div
                   key={property._id}
-                  className="bg-white rounded-xl border border-[#78C841]/10 shadow-sm hover:shadow-lg transition overflow-hidden"
+                  className="bg-white rounded-xl border border-[#78C841]/10 shadow-sm hover:shadow-lg transition overflow-hidden md:h-[250px]"
                 >
-                  <div className="flex flex-col sm:flex-row">
+                  <div className="flex flex-col sm:flex-row h-full">
                     
                     {/* IMAGE */}
                     <div className="relative sm:w-[40%]">
@@ -135,9 +135,29 @@ export default function Properties() {
                         {property.title}
                       </h2>
 
-                      <p className="text-xs sm:text-sm text-gray-500 mt-1">
-                        {property.locality}
-                      </p>
+                      <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-4 h-4 text-gray-400"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth={2}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243A8 8 0 1117.657 16.657z"
+    />
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+    />
+  </svg>
+
+  {property.locality}
+</p>
 
                       {/* INFO BAR */}
                       <div className="mt-3 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 flex items-center justify-between text-xs sm:text-sm">
@@ -158,10 +178,10 @@ export default function Properties() {
                         </div>
                       </div>
 
-                      <p className="text-xs sm:text-sm text-gray-500 mt-3 line-clamp-2">
+                      {/* <p className="text-xs sm:text-sm text-gray-500 mt-3 line-clamp-2">
                         {property.description ||
                           "Modern rent house with great connectivity and amenities."}
-                      </p>
+                      </p> */}
 
                       <div className="flex-1"></div>
 
@@ -172,7 +192,7 @@ export default function Properties() {
                             setSelectedProperty(property.title);
                             setOpen(true);
                           }}
-                          className="text-sm text-[#78C841] border border-[#78C841] px-4 py-2 rounded hover:bg-[#78C841] hover:text-white transition"
+                          className="text-sm text-[#78C841] border border-[#78C841] px-4 py-2 rounded hover:bg-[#78C841] hover:text-white transition cursor-pointer"
                         >
                           Price on Call
                         </button>

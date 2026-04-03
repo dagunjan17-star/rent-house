@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-
+import Link from "next/link";
 const HeroSection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -99,7 +99,15 @@ const HeroSection = () => {
             stations, schools, and shopping malls. Browse verified rental
             listings and find the ideal home in Gurgaon quickly and easily.
           </p>
+<Link href="/rent-house">
+  <button className="relative overflow-hidden bg-[#78C841] text-white px-6 py-3 rounded-xl font-semibold shadow-md transition-all duration-300 hover:bg-[#78C841] hover:shadow-xl hover:scale-105 mt-4 cursor-pointer">
+    
+    <span className="relative z-10">Learn More</span>
 
+    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] hover:translate-x-[100%] transition duration-700"></span>
+  
+  </button>
+</Link>
         </div>
 
         {/* RIGHT FORM */}
