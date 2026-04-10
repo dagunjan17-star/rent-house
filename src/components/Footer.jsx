@@ -28,7 +28,20 @@ export default function Footer() {
     <footer className="bg-[#0F0617] pt-16 pb-8 px-4 border-t border-[#1F3D12]">
 
       <div className="max-w-7xl mx-auto">
+{/* 🔥 TOP HEADING */}
+<div className="mb-12 ">
+  <h2 className="text-2xl sm:text-3xl font-bold text-white">
+    Find Rental Houses in{" "}
+    <span className="text-[#78C841]">Gurgaon</span>
+  </h2>
 
+  <p className="text-gray-400 mt-3 max-w-2xl text-sm sm:text-base">
+    Explore affordable and premium rental houses in top locations of Gurgaon,
+    perfect for families and working professionals.
+  </p>
+
+  <div className="w-20 h-1 bg-[#78C841]  mt-5 rounded-full"></div>
+</div>
         {/* LOCATIONS */}
 
         <div className="mb-10">
@@ -44,10 +57,10 @@ export default function Footer() {
               <div key={index} className="relative group">
 
                 <Link
-                  href={`/${createSlug(loc)}`}
+                  href={`/rent-house-in-${createSlug(loc)}-gurgaon`}
                   className="block truncate text-gray-400 hover:text-[#78C841] transition duration-200"
                 >
-                  Rent House in {loc}
+                  Rent House in {loc}, Gurgaon
                 </Link>
 
                 <div className="
@@ -62,7 +75,7 @@ export default function Footer() {
                   z-[9999]
                   pointer-events-none">
 
-                  Rent House in {loc}
+                  Rent House in {loc}, Gurgaon
 
                 </div>
 
@@ -103,7 +116,42 @@ export default function Footer() {
           </div>
 
         </div>
+{/* 🔥 Bottom Navigation Buttons - CENTER */}
+<div className="border-t border-[#1F3D12] pt-6 mt-10 mb-6">
+  <div className="flex justify-center items-center">
+    
+    <div className="flex flex-wrap gap-6 justify-center text-sm">
+      <Link
+        href="/about"
+        className="text-gray-400 hover:text-[#78C841] transition"
+      >
+        About
+      </Link>
 
+      <Link
+        href="/blog"
+        className="text-gray-400 hover:text-[#78C841] transition"
+      >
+        Blog
+      </Link>
+
+      <Link
+        href="/contact"
+        className="text-gray-400 hover:text-[#78C841] transition"
+      >
+        Contact
+      </Link>
+
+      <Link
+        href="/how-it-works"
+        className="text-gray-400 hover:text-[#78C841] transition"
+      >
+        How It's Work
+      </Link>
+    </div>
+
+  </div>
+</div>
         <div className="border-t border-[#1F3D12] pt-6 flex flex-col md:flex-row items-center justify-between">
 
           <p className="text-sm text-gray-400 text-center md:text-left">

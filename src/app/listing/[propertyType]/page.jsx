@@ -28,30 +28,15 @@ export default function PropertyTypePage() {
 
   const propertySectionRef = useRef(null);
 
+ const bhk = propertyType?.split("-")[0];
+
 useEffect(() => {
-  const timer = setTimeout(() => {
-    if (!propertySectionRef.current) return; // ✅ important
-
-    const yOffset = -90;
-
-    const y =
-      propertySectionRef.current.getBoundingClientRect().top +
-      window.pageYOffset +
-      yOffset;
-
-    window.scrollTo({
-      top: y,
-      behavior: "smooth",
-    });
-  }, 100);
-
-  return () => clearTimeout(timer);
-}, [properties]);
-useEffect(() => {
-  if (propertyType) {
-    fetchPropertiesByType(`${propertyType} BHK`, 1);
+  if (bhk) {
+    fetchPropertiesByType(`${bhk} BHK`, 1);
   }
-}, [propertyType]);
+}, [bhk]);
+
+
   /* LOADING */
 
   if (loading3) {
@@ -66,7 +51,7 @@ useEffect(() => {
         </div>
 
         <p className="mt-5 text-sm font-medium text-gray-600 tracking-wide">
-          Loading {propertyType} BHK Rent Houses...
+          Loading {bhk} BHK Rent Houses...
         </p>
 
       </div>
@@ -91,7 +76,7 @@ useEffect(() => {
       <div className="text-center py-20">
 
         <h2 className="text-xl md:text-2xl font-semibold text-gray-800">
-          No {propertyType} BHK Rent Houses Available
+          No {bhk} BHK Rent Houses Available
         </h2>
 
         <p className="text-gray-500 mt-2 text-sm">
@@ -116,11 +101,11 @@ useEffect(() => {
       <div className="max-w-7xl mx-auto mb-10">
 
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-          {propertyType} BHK Rent House in Gurgaon
+          {bhk} BHK Rent House in Gurgaon
         </h1>
 
         <p className="mt-3 text-gray-500 max-w-2xl text-sm sm:text-base">
-          Explore premium {propertyType} BHK rent houses across prime
+          Explore premium {bhk} BHK rent houses across prime
           locations in Gurgaon with verified listings and best rental deals.
         </p>
 
