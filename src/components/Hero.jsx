@@ -99,7 +99,7 @@ const HeroSection = () => {
             stations, schools, and shopping malls. Browse verified rental
             listings and find the ideal home in Gurgaon quickly and easily.
           </p>
-<Link href="/rent-house">
+<Link href="/how-it-works">
   <button className="relative overflow-hidden bg-[#78C841] text-white px-6 py-3 rounded-xl font-semibold shadow-md transition-all duration-300 hover:bg-[#78C841] hover:shadow-xl hover:scale-105 mt-4 cursor-pointer">
     
     <span className="relative z-10">Learn More</span>
