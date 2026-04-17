@@ -26,6 +26,7 @@ export default function BlogDetails({ post }) {
             border border-[#78C841]/10">
               <Image
                 src={single?.HeroImg?.url}
+                unoptimized
                 alt={single?.HeroAltText || "Blog Image"}
                 width={1200}
                 height={800}
@@ -74,6 +75,7 @@ export default function BlogDetails({ post }) {
                 <div className="w-full my-6">
                   <Image
                     src={section.img.url}
+                    unoptimized
                     alt={section?.img?.altText || "Blog Image"}
                     width={900}
                     height={600}
