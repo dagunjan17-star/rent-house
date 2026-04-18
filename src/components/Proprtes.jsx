@@ -112,6 +112,7 @@ export default function Properties() {
                     <div className="relative sm:w-[40%]">
                       <Image
                         src={property?.media?.url || "/no-image.png"}
+                        unoptimized
                         alt={property.title}
                         width={600}
                         height={400}
