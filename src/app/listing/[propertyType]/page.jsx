@@ -101,7 +101,7 @@ useEffect(() => {
       <div className="max-w-7xl mx-auto mb-10">
 
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-          {bhk} BHK Rent House in Gurgaon
+          {bhk} BHK House for Rent in Gurgaon
         </h1>
 
         <p className="mt-3 text-gray-500 max-w-2xl text-sm sm:text-base">
