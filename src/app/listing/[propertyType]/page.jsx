@@ -9,7 +9,7 @@ import ContactPopup from "@/components/ContactPopup";
 import SidebarEnquiryForm from "@/components/SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
 import BHKFilterButtons from "@/components/BHKFilterButtons";
-
+import Breadcrumb from "@/components/Breadcrumb";
 export default function PropertyTypePage() {
 
   const { propertyType } = useParams();
@@ -99,7 +99,9 @@ useEffect(() => {
       {/* HEADING */}
 
       <div className="max-w-7xl mx-auto mb-10">
-
+<div className="mb-6">
+   <Breadcrumb />
+  </div>
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
           {bhk} BHK House for Rent in Gurgaon
         </h1>

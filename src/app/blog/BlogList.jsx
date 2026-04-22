@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useBlog } from "@/contextapi/BlogContext";
 import Pagination from "@/components/Pagination";
-
+import Breadcrumb from "@/components/Breadcrumb";
 const formatDate = (date) => {
   if (!date) return "";
   const d = new Date(date);
@@ -37,7 +37,9 @@ export default function BlogList() {
       className="px-4 sm:px-6 lg:px-0 max-w-7xl mx-auto py-12
       bg-gradient-to-b from-white to-[#F3FAEC]"
     >
-
+<div className="mb-6">
+   <Breadcrumb />
+  </div>
       {/* HEADING */}
       <div className="mb-14">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
