@@ -42,12 +42,12 @@ export default function BlogList() {
   </div>
       {/* HEADING */}
       <div className="mb-14">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
           Latest Rental Insights &{" "}
           <span className="text-[#78C841]">
             Gurgaon Updates
           </span>
-        </h2>
+        </h1>
 
         <p className="text-gray-600 mt-4 max-w-2xl">
           Stay updated with rental market trends, legal tips, and expert advice
