@@ -80,14 +80,14 @@ export default function Page() {
 
         <div className="mb-16">
 
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-900">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-900">
 
             Find Your{" "}
             <span className="text-[#78C841]">
               Perfect Rent House in Gurgaon
             </span>
 
-          </h2>
+          </h1>
 
           <p className="mt-6 text-gray-600 max-w-2xl">
 

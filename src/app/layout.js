@@ -18,26 +18,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
- title: "Houses for Rent in Gurgaon | Independent Homes & Villas for Rent",
+ title: "Rent House in Gurgaon | Independent Homes & Villas for Rent in Gurugram",
 
 description:
-"Find verified houses for rent in Gurgaon including independent houses, villas, and builder floors. Explore affordable and furnished rental homes in prime locations with modern amenities and flexible lease options.",
+"Find verified houses for rent in Gurgaon — 1BHK, 2BHK, 3BHK & 4BHK independent homes, builder floors & villas in Golf Course Road, Sohna Road, Palam Vihar, DLF Phase & 80+ localities. No broker. Book free visit today.",
 
 keywords: [
-  "house for rent in gurgaon",
-  "independent house rent gurgaon",
-  "villa for rent gurgaon",
-  "homes for rent gurgaon",
-  "builder floor rent gurgaon",
-  "furnished house gurgaon rent",
-  "cheap house for rent gurgaon",
-  "ready to move house rent gurgaon",
-  "rental house gurgaon",
-  "residential house rent gurgaon"
+ "rent house in Gurgaon", "house for rent in Gurgaon", "houses for rent in Gurgaon", "independent house for rent Gurgaon", "rent house Gurugram", "house on rent Gurgaon", "1BHK house for rent Gurgaon", "2BHK house for rent Gurgaon", "3BHK house for rent Gurgaon", "4BHK house for rent Gurgaon", "furnished house for rent Gurgaon", "affordable house for rent Gurgaon", "villa for rent Gurgaon", "builder floor for rent Gurgaon", "rent house near Cyber City Gurgaon", "rent house Golf Course Road Gurgaon", "rent house Sohna Road Gurgaon", "rent house Palam Vihar Gurgaon", "rent house DLF Phase Gurgaon", "no broker rent house Gurgaon"
 ],
 
   alternates: {
-    canonical: "https://www.houseforrentingurgaon.com/",
+    canonical: "https://www.renthouseingurgaon.com/",
   },
   verification: {
     google: "sLzipjeWA8qP9b0bXnbYkr8pt1RjfN2ExoUPW8S3dm4",

@@ -7,7 +7,7 @@ export const metadata = {
   description:
     "View full details of this property including price, location, photos, amenities, area and owner details. Find verified properties for rent with latest updates.",
   alternates: {
-    canonical: "https://www.dealacres.com/property",
+    canonical: "https://www.renthouseingurgaon/property",
   },
 };
 

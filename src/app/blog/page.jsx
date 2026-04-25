@@ -3,22 +3,17 @@ import BlogList from "./BlogList";
 
 export async function generateMetadata() {
   return {
-    title: "Rent House in Gurgaon Blogs | Rental Tips, Market Trends & Area Guide",
+    title: "Blog | Rent House in Gurgaon | Rental Tips, Price Trends & Area Guide",
 
     description:
-      "Explore expert blogs on rent house in Gurgaon. Get rental market trends, tenant tips, legal advice and guides to find the best houses for rent in Gurgaon.",
+      "Read expert blogs on renting a house in Gurgaon — rental price trends, best areas, tenant tips, furnished vs unfurnished home guide & market updates for independent homes & villas in Gurugram. Stay informed before you rent.",
 
     keywords: [
-      "rent house in Gurgaon",
-      "house for rent Gurgaon",
-      "Gurgaon rental market trends",
-      "tenant guide Gurgaon",
-      "best areas to rent house in Gurgaon",
-      "Gurgaon rent house tips"
+      "rent house Gurgaon blog", "house rental tips Gurgaon", "best area to rent house Gurgaon", "house rent price trends Gurgaon", "independent house rent guide Gurgaon", "furnished home rental advice Gurugram", "rental market Gurgaon 2026", "villa for rent blog Gurgaon", "tenant guide Gurgaon", "house renting tips Gurugram", "affordable rent house areas Gurgaon", "rental agreement tips Gurgaon", "rent house news Gurgaon", "real estate rental blog Gurgaon", "Gurgaon property rent update 2026"
     ],
 
     alternates: {
-      canonical: "www.houseforrentingurgaon.com/blog", // 🔥 apna real domain yaha replace karna
+      canonical: "www.renthouseingurgaon.com/blog", // 🔥 apna real domain yaha replace karna
     },
   };
 }

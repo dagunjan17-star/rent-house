@@ -45,9 +45,9 @@ export default function Properties() {
     >
       {/* ================= HEADING ================= */}
       <div className="max-w-7xl mx-auto mb-10">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
           Rent House in Gurgaon
-        </h1>
+        </h2>
 
         <p className="mt-3 text-gray-500 text-sm sm:text-base max-w-2xl">
           Explore premium rent houses in prime sectors of Gurgaon.
