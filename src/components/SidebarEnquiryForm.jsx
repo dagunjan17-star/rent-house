@@ -66,9 +66,9 @@ const SidebarEnquiryForm = () => {
       p-8 border border-gray-200"
     >
 
-      <h3 className="text-2xl font-semibold text-[#78C841] mb-2">
+      <h2 className="text-2xl font-semibold text-[#78C841] mb-2">
         Get Rent House Consultation
-      </h3>
+      </h2>
 
       <p className="text-sm text-gray-600 mb-6 leading-relaxed">
         Looking for a rent house in Gurgaon? Share your requirement and our
