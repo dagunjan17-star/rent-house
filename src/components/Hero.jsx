@@ -115,9 +115,9 @@ const HeroSection = () => {
 
           <div className="bg-white/10 backdrop-blur-xl p-8 border border-white/20 shadow-2xl text-white rounded">
 
-            <h3 className="text-2xl font-semibold mb-2">
+            <h2 className="text-2xl font-semibold mb-2">
               Book Rental Visit
-            </h3>
+            </h2>
 
             <p className="text-sm mb-6 text-gray-300">
               Submit your details to explore the best rental houses in Gurgaon.
