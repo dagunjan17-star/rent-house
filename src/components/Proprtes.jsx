@@ -10,7 +10,8 @@ import Pagination from "@/components/Pagination";
 import BHKFilterButtons from "@/components/BHKFilterButtons";
 
 export default function Properties() {
-  const { properties, loading, error, refetch } = useProperty();
+  const { properties, loading, error, refetch,page2, setPage2,
+    totalItems, itemsPerPage, } = useProperty();
 
   const [open, setOpen] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState("");
@@ -18,25 +19,21 @@ export default function Properties() {
 
   const propertySectionRef = useRef(null);
 
-  const itemsPerPage = 150;
+  
 
   /* 🔥 Refetch on mount */
   useEffect(() => {
     refetch();
   }, []);
 
-  /* Reset page when data changes */
-  useEffect(() => {
-    if (properties) {
-      setCurrentPage(1);
-    }
-  }, [properties]);
+  // /* Reset page when data changes */
+  // useEffect(() => {
+  //   if (properties) {
+  //     setPage2(1);
+  //   }
+  // }, [properties]);
 
-  /* Pagination */
-  const totalItems = properties?.length || 0;
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentProperties = properties?.slice(startIndex, endIndex) || [];
+ 
 
   return (
     <section
@@ -88,7 +85,7 @@ export default function Properties() {
                 </div>
               ))}
             </div>
-          ) : currentProperties.length === 0 ? (
+          ) :properties.length === 0 ? (
             /* ❌ NO DATA */
             <div className="text-center py-20">
               <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">
@@ -101,7 +98,7 @@ export default function Properties() {
           ) : (
             <>
               {/* ✅ PROPERTY CARDS */}
-              {currentProperties.map((property) => (
+              {properties.map((property) => (
                 <div
                   key={property._id}
                   className="bg-white rounded-xl border border-[#78C841]/10 shadow-sm hover:shadow-lg transition overflow-hidden md:h-[250px]"
@@ -214,12 +211,12 @@ export default function Properties() {
               {totalItems > itemsPerPage && (
                 <div className="mt-12" key={totalItems}>
                   <Pagination
-                    key={totalItems + "-" + currentPage}
+                    key={totalItems + "-" + page2}
                     totalItems={totalItems}
                     itemsPerPage={itemsPerPage}
-                    currentPage={currentPage}
-                    onPageChange={(page) => {
-                      setCurrentPage(page);
+                    currentPage={page2}
+                    onPageChange={(page2) => {
+                      setPage2(page2);
 
                       const yOffset = -90;
                       const y =
