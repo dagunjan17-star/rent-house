@@ -24,7 +24,7 @@ const [page2,setPage2]=useState(1);
       setError(null);
 
       const res = await axios.get(
-        `https://deal-acres-backend.onrender.com/api/listed-properties/getPropertiesByDomain/${domain}?page=${page2}&limit=${limit}`
+        `https://gurgaon-backend.onrender.com/api/listed-properties/getPropertiesByDomain/${domain}?page=${page2}&limit=${limit}`
       );
 
       setProperties(res.data?.data || []);
@@ -55,7 +55,7 @@ const [page2,setPage2]=useState(1);
       setError3(null);
 
       const res = await axios.get(
-        `https://deal-acres-backend.onrender.com/api/listed-properties/getPropertiesByType/${type}/${domain}?page=${pageNumber}`
+        `https://gurgaon-backend.onrender.com/api/listed-properties/getPropertiesByType/${type}/${domain}?page=${pageNumber}`
       );
 
       setProperties(res.data?.data || []);
@@ -86,7 +86,7 @@ const [page2,setPage2]=useState(1);
       setError2(null);
 
       const response = await axios.get(
-        `https://deal-acres-backend.onrender.com/api/listed-properties/getPropertiesByDomainAndLocality/${domain}/${decodeSlugWithHyphen(locality)}`
+        `https://gurgaon-backend.onrender.com/api/listed-properties/getPropertiesByDomainAndLocality/${domain}/${decodeSlugWithHyphen(locality)}`
       );
 
       setData(response?.data?.data || []);
