@@ -26,9 +26,11 @@ export default function PropertyCard({ property }) {
       >
 
         {/* IMAGE */}
-        <div className="relative w-full h-40">
+        <div className="relative w-full h-60">
           <Image
-            src={property?.media?.url || "/no-image.png"}
+            src={property?.media?.url 
+              ? property?.media?.url
+                      : "https://res.cloudinary.com/dbihlu2ve/image/upload/v1778830993/GurgaonProperties/fls3swkw4k5bdcjf40y5.webp"}
             unoptimized
             alt={property.title}
             width={400}

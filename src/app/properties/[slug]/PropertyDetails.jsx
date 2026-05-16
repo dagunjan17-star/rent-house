@@ -61,10 +61,12 @@ export default function PropertyDetails({ propertyy }) {
 
           <div className="relative w-full h-[250px] sm:h-[340px] rounded overflow-hidden shadow-md border border-gray-200 group">
 
-            {propertyy?.media?.url ? (
+            
 
               <Image
-                src={propertyy.media.url}
+                src={propertyy?.media?.url
+                  ? propertyy?.media?.url
+                      : "https://res.cloudinary.com/dbihlu2ve/image/upload/v1778830993/GurgaonProperties/fls3swkw4k5bdcjf40y5.webp"}
                 unoptimized
                 alt={propertyy?.title}
                 fill
@@ -72,13 +74,7 @@ export default function PropertyDetails({ propertyy }) {
                 className="object-cover transition duration-500 group-hover:scale-105"
               />
 
-            ) : (
-
-              <div className="flex items-center justify-center w-full h-full bg-gray-100 text-gray-500">
-                No Image Available
-              </div>
-
-            )}
+           
 
           </div>
 
