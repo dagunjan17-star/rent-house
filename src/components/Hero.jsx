@@ -87,17 +87,7 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-lg max-w-2xl text-gray-200 leading-relaxed">
-            Looking for the perfect house for rent in Gurgaon? Discover
-            affordable and premium rental homes in one of the fastest-growing
-            cities in India. Gurgaon offers a wide range of rental properties
-            including 1BHK, 2BHK, and spacious 3–4BHK homes in well-developed
-            residential societies.
-            <br />
-            <br />
-            Popular areas like Golf Course Road, Sohna Road, and Dwarka
-            Expressway provide excellent connectivity to offices, metro
-            stations, schools, and shopping malls. Browse verified rental
-            listings and find the ideal home in Gurgaon quickly and easily.
+            Find your ideal house for rent in Gurgaon — where modern urban living meets homely comfort! Unlike apartments in high-rise towers, independent houses and builder floor rentals in Gurgaon offer a unique combination of privacy, space, and affordability that many families and professionals deeply value. Whether you're looking for a standalone independent house with a private garden in sectors like Palam Vihar, DLF Phase 2, or Sushant Lok, or a spacious builder floor rental in a quiet residential colony, Gurgaon's house rental market has abundant choices for you. Renting a house in Gurgaon gives you more living space per rupee, greater customisation freedom, and a relaxed neighbourhood atmosphere while keeping you connected to the city's corporate corridors, premier schools, hospitals, and entertainment destinations. <br/> Families with elderly members, pet owners, and those who love entertaining find independent house rentals especially rewarding. Our curated listings of houses for rent in Gurgaon cover all major residential sectors, societies, and colonies — with verified owner contacts, honest pricing, and complete property details. Start your house hunt in Gurgaon today and find the space that truly feels like home!
           </p>
 <Link href="/how-it-works">
   <button className="relative overflow-hidden bg-[#78C841] text-white px-6 py-3 rounded-xl font-semibold shadow-md transition-all duration-300 hover:bg-[#78C841] hover:shadow-xl hover:scale-105 mt-4 cursor-pointer">

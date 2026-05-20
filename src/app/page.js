@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Hero from "@/components/Hero.jsx"
 import Properties from "@/components/Proprtes";
+import GurgaonRealEstateSection from "@/components/GurgaonRealEstateSection";
 // export const metadata = {
 //   title: "Flat for Rent in Gurgaon | 1BHK, 2BHK & Furnished Flats",
 //   description:
@@ -12,6 +13,7 @@ export default function Home() {
     <>
      <Hero/>
      <Properties/>
+          <GurgaonRealEstateSection/>
     </>
   );
 }
