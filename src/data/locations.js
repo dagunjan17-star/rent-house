@@ -22,4 +22,4 @@ export const locations = [
   'Sector 89',           'Sector 99',           'Sohna Road',
   'South City 1',        'South City 2',        'Sushant Lok Phase 1',
   'Sushant Lok Phase 2', 'Sushant Lok Phase 3', 'Udyog Vihar'
-];m
+];
