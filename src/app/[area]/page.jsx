@@ -1,109 +1,134 @@
-import FilterProperties from "./FilterProperties";
-import SidebarEnquiryForm from "@/components/SidebarEnquiryForm";
-import Breadcrumb from "@/components/Breadcrumb";
+// app/[area]/page.jsx
+
+import PageContent from "@/components/PageContent";
+import Listing from "./Listing";
+
+// import PageContent from "@/components/PageContent";
+
+const DOMAIN = "www.renthouseingurgaon.com";
+const BASE_URL = "http://localhost:8282";
+
+// Fallback SEO
+const FALLBACK_META = {
+  title: "Houses for Rent in Gurgaon | Affordable & Family Homes",
+  description:
+    "Find houses for rent in Gurgaon with modern amenities, spacious layouts, and affordable rental options in prime locations.",
+};
+
+// Common API Function
+const getPageData = async (slug) => {
+  try {
+    const res = await fetch(
+      `${BASE_URL}/api/page-content/getPageContent?domain=${DOMAIN}&slug=${slug}`,
+      {
+        cache: "no-store",
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch page data");
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+// Dynamic Metadata
 export async function generateMetadata({ params }) {
-  const resolvedParams = await params;
-  const rawArea = resolvedParams?.area;
+  const { area } = await params;
 
-  const area = rawArea?.replace("rent-house-in-", "");
+  const result = await getPageData(area);
 
-  const formattedArea = area
-    ?.replace(/-/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  // Fallback Meta
+  if (!result?.success || !result?.data) {
+    return {
+      title: FALLBACK_META.title,
+      description: FALLBACK_META.description,
 
-  const locationName = formattedArea || "Gurgaon";
+      alternates: {
+        canonical: `https://${DOMAIN}/${area}`,
+      },
+
+      openGraph: {
+        title: FALLBACK_META.title,
+        description: FALLBACK_META.description,
+        url: `https://${DOMAIN}/${area}`,
+        siteName: DOMAIN,
+        locale: "en_IN",
+        type: "website",
+      },
+
+      twitter: {
+        card: "summary_large_image",
+        title: FALLBACK_META.title,
+        description: FALLBACK_META.description,
+      },
+
+      robots: {
+        index: true,
+        follow: true,
+      },
+    };
+  }
+
+  const data = result.data;
+
+  const canonicalUrl = `https://${DOMAIN}/${data.slug}`;
 
   return {
-    title: `Houses for Rent in ${locationName} | Rent Independent House & Villa`,
-
-    description: `Find houses for rent in ${locationName}. Explore independent houses, villas, and rental homes including 1BHK, 2BHK, and 3BHK options with modern amenities and great connectivity in ${locationName}.`,
-
-    keywords: [
-      `houses for rent in ${locationName}`,
-      `rent house ${locationName}`,
-      `independent house rent ${locationName}`,
-      `villa for rent ${locationName}`,
-      `1BHK house rent ${locationName}`,
-      `2BHK house rent ${locationName}`,
-      `3BHK house rent ${locationName}`,
-      `${locationName} rental homes`,
-    ],
+    title: data.metaTitle,
+    description: data.metaDescription,
 
     alternates: {
-      canonical: `https://www.renthouseingurgaon.com/${rawArea}`,
+      canonical: canonicalUrl,
+    },
+
+    openGraph: {
+      title: data.metaTitle,
+      description: data.metaDescription,
+      url: canonicalUrl,
+      siteName: DOMAIN,
+      locale: "en_IN",
+      type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: data.metaTitle,
+      description: data.metaDescription,
+    },
+
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
+
+// Page Component
 export default async function Page({ params }) {
+  const { area } = await params;
 
-  const resolvedParams = await params;
-    const rawArea = resolvedParams?.area;
+  const result = await getPageData(area);
 
-// ✅ CLEAN SLUG (IMPORTANT)
-const area = rawArea?.replace("rent-house-in-", "");
+  // // Fallback UI
+  // if (!result?.success || !result?.data) {
+  //   return (
+  //     <main>
+  //       <h1>{FALLBACK_META.title}</h1>
 
-// slug format → sector-9 → Sector 9
-const formattedArea = area
-  ?.replace(/-/g, " ")
-  .replace(/\b\w/g, (c) => c.toUpperCase());
+  //       <p>{FALLBACK_META.description}</p>
+  //     </main>
+  //   );
+  // }
 
   return (
-
-    <div className="bg-[#F3FAEC] min-h-screen">
-
-      <div className="max-w-7xl mx-auto px-4 py-10">
-<div className="mb-6">
-   <Breadcrumb />
-  </div>
-        {/* HEADING */}
-
-        <div className="mb-14">
-
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-
-            Rent Houses in{" "}
-            <span className="text-[#78C841]">
-              {formattedArea || "Gurgaon"}
-            </span>
-
-          </h1>
-
-          <p className="text-gray-600 mt-3">
-            Explore verified rent houses in {formattedArea || "Gurgaon"} including
-            1 BHK, 2 BHK and 3 BHK flats with modern amenities and great connectivity.
-          </p>
-
-          <div className="w-20 h-1 bg-[#78C841] mt-6 rounded-full"></div>
-
-        </div>
-
-        {/* MAIN GRID */}
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-
-          {/* LEFT */}
-
-          <div className="lg:col-span-8 space-y-6">
-
-            <FilterProperties area={area} />
-
-          </div>
-
-          {/* RIGHT */}
-
-          <div className="lg:col-span-4">
-
-            <div className="sticky top-24">
-              <SidebarEnquiryForm />
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
+    <main>
+      <Listing slug={area}/>
+      <PageContent pageContent={[result?.data?.pageContent]} area={result?.data?.locality} />
+    </main>
   );
 }
