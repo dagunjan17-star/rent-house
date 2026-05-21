@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
 
-export default function ContactPopup({ isOpen, onClose, propertyTitle }) {
+export default function ContactPopup({
+  isOpen,
+  onClose,
+  propertyTitle,
+}) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -11,53 +16,104 @@ export default function ContactPopup({ isOpen, onClose, propertyTitle }) {
 
   const [loading, setLoading] = useState(false);
 
+  // CLOSE POPUP
   if (!isOpen) return null;
 
+  // INPUT CHANGE
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    // PHONE VALIDATION
     if (name === "phone") {
+      // only numbers
       if (!/^\d*$/.test(value)) return;
+
+      // max 10 digits
       if (value.length > 10) return;
     }
 
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
+  // SUBMIT FORM
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // PHONE CHECK
     if (formData.phone.length !== 10) {
-      alert("Phone number must be 10 digits");
+      toast.error(
+        "Phone number must be exactly 10 digits"
+      );
       return;
     }
+
+    // WEBSITE NAME
+    const website =
+      typeof window !== "undefined"
+        ? window.location.hostname.replace(
+            "www.",
+            ""
+          )
+        : "";
 
     try {
       setLoading(true);
 
+      const payload = {
+        ...formData,
+        propertyTitle,
+        website,
+        source: "Popup Enquiry",
+      };
+
+      console.log("PAYLOAD:", payload);
+
+      // IMPORTANT
+      // /api/submit use karo
       const res = await fetch("/api/submit", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type":
+            "application/json",
         },
-        body: JSON.stringify({
-          ...formData,
-          propertyTitle,
-        }),
+        body: JSON.stringify(payload),
       });
+
+      console.log("STATUS:", res.status);
 
       const data = await res.json();
 
+      console.log("RESPONSE:", data);
+
       if (data.success) {
-        alert("Rent House enquiry submitted successfully!");
-        setFormData({ name: "", phone: "", message: "" });
+        toast.success(
+          "Enquiry Submitted Successfully!"
+        );
+
+        // RESET FORM
+        setFormData({
+          name: "",
+          phone: "",
+          message: "",
+        });
+
+        // CLOSE POPUP
         onClose();
       } else {
-        alert("Something went wrong!");
+        toast.error(
+          data.message ||
+            "Something went wrong"
+        );
       }
-
     } catch (err) {
-      alert("Server error!");
+      console.log("ERROR:", err);
+
+      toast.error(
+        "Server error. Please try again later."
+      );
     } finally {
       setLoading(false);
     }
@@ -118,7 +174,7 @@ export default function ContactPopup({ isOpen, onClose, propertyTitle }) {
             onChange={handleChange}
             className="w-full px-4 py-3 border border-gray-300 rounded
             focus:ring-2 focus:ring-[#78C841] focus:border-[#78C841]
-            outline-none resize-none transition placeholder:text-gray-500"
+            outline-none resize-none transition placeholder:text-gray-500 text-black"
           />
 
           <button
