@@ -10,6 +10,7 @@ import SidebarEnquiryForm from "@/components/SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
 import BHKFilterButtons from "@/components/BHKFilterButtons";
 import Breadcrumb from "@/components/Breadcrumb";
+import ViewDetailsButton from "@/components/ViewDetailsButton";
 export default function PropertyTypePage() {
 
   const { propertyType } = useParams();
@@ -239,8 +240,16 @@ useEffect(() => {
                     >
                       Price on Call
                     </button>
+                        <ViewDetailsButton 
+                         className="text-sm border border-[#78C841]
+                      text-[#78C841]
+                      px-4 py-2 rounded
+                      hover:bg-[#78C841]
+                      hover:text-white transition text-center"
 
-                    <Link
+                      slug={property.slug}
+                      href={`https://www.dealacres.com/property/${property.slug}`}/>
+                    {/* <Link
                       href={`/properties/${property.slug}`}
                       className="text-sm border border-[#78C841]
                       text-[#78C841]
@@ -249,7 +258,7 @@ useEffect(() => {
                       hover:text-white transition text-center"
                     >
                       View Details
-                    </Link>
+                    </Link> */}
 
                   </div>
 

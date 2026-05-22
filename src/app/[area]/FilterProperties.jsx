@@ -223,13 +223,16 @@ export default function FilterProperties({ area }) {
                   >
                     Price on Call
                   </button>
-
-                  <Link
+                  <ViewDetailsButton className="text-[#78C841] text-sm font-medium hover:underline"
+                  
+                                        slug={property.slug}
+                                        href={`https://www.dealacres.com/property/${property.slug}`}/>
+                  {/* <Link
                     href={`/properties/${property.slug}`}
                     className="text-[#78C841] text-sm font-medium hover:underline"
                   >
                     View Details →
-                  </Link>
+                  </Link> */}
 
                 </div>
 

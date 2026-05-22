@@ -2,7 +2,7 @@
 
 const PageContent = ({ pageContent = [],area }) => {
   return (
-    <section className="w-full px-4 sm:px-6 pb-6">
+    <section className="w-full px-4 sm:px-6 pb-6 bg-[#F3FAEC]">
       <div className="max-w-7xl mx-auto">
         
         <div className="">

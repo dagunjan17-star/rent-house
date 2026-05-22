@@ -79,14 +79,14 @@ const HeroSection = () => {
         {/* LEFT CONTENT */}
         <div className="md:col-span-7 lg:col-span-8 text-white">
 
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+          <h1 className="text-2xl md:text-4xl font-bold mb-6 leading-tight">
             Rent House in {" "}
             <span className="text-[#78C841] bg-white px-3 py-1 rounded">
               Gurgaon
             </span>
           </h1>
 
-          <p className="text-lg max-w-2xl text-gray-200 leading-relaxed">
+          <p className="text-lg max-w-4xl text-gray-200 leading-relaxed">
             Find your ideal house for rent in Gurgaon — where modern urban living meets homely comfort! Unlike apartments in high-rise towers, independent houses and builder floor rentals in Gurgaon offer a unique combination of privacy, space, and affordability that many families and professionals deeply value. Whether you're looking for a standalone independent house with a private garden in sectors like Palam Vihar, DLF Phase 2, or Sushant Lok, or a spacious builder floor rental in a quiet residential colony, Gurgaon's house rental market has abundant choices for you. Renting a house in Gurgaon gives you more living space per rupee, greater customisation freedom, and a relaxed neighbourhood atmosphere while keeping you connected to the city's corporate corridors, premier schools, hospitals, and entertainment destinations. <br/> Families with elderly members, pet owners, and those who love entertaining find independent house rentals especially rewarding. Our curated listings of houses for rent in Gurgaon cover all major residential sectors, societies, and colonies — with verified owner contacts, honest pricing, and complete property details. Start your house hunt in Gurgaon today and find the space that truly feels like home!
           </p>
 <Link href="/how-it-works">
