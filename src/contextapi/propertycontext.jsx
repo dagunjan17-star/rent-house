@@ -8,6 +8,8 @@ const PropertyContext = createContext();
 const DEFAULT_DOMAIN = "www.houseforrentingurgaon.com";
 
 export const PropertyProvider = ({ children }) => {
+
+  const [dailyLimit,setDailyLimit]=useState(50);
   const [domain] = useState(DEFAULT_DOMAIN);
 
   /* ================= MAIN PROPERTIES ================= */
@@ -126,6 +128,7 @@ const [page2,setPage2]=useState(1);
         error2,
         locality,
         setLocality,
+        dailyLimit,
       }}
     >
       {children}
