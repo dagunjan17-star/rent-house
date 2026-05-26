@@ -1,14 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import toast from "react-hot-toast";
+import AlertPopup from "./AlertPopup";
 import Link from "next/link";
 const HeroSection = () => {
-  const [formData, setFormData] = useState({
+   const [formData, setFormData] = useState({
     name: "",
     phone: "",
     message: "",
   });
+  const [popup, setPopup] = useState({
+  open: false,
+  type: "success",
+  message: "",
+});
 
   const [loading, setLoading] = useState(false);
 
@@ -32,7 +37,11 @@ const HeroSection = () => {
     e.preventDefault();
 
     if (formData.phone.length !== 10) {
-      toast.error("Phone number must be 10 digits");
+      setPopup({
+        open: true,
+        type: "error",
+        message: "Phone number must be exactly 10 digits",
+      });
       return;
     }
 
@@ -50,14 +59,38 @@ const HeroSection = () => {
 
       const result = await res.json();
 
-      if (result.success) {
-        toast.success("Enquiry submitted successfully!");
-        setFormData({ name: "", phone: "", message: "" });
-      } else {
-        toast.error("Something went wrong. Try again.");
-      }
+     if (result.success) {
+  setPopup({
+    open: true,
+    type: "success",
+    message: "Enquiry submitted successfully!",
+  });
+
+  setFormData({
+    name: "",
+    phone: "",
+    message: "",
+  });
+} else {
+  setPopup({
+    open: true,
+    type: "error",
+    message: "Something went wrong. Try again.",
+  });
+}
     } catch (err) {
-      toast.error("Server error. Please try later.");
+      setPopup({
+  open: true,
+  type: "error",
+  message: "Server error. Please try later.",
+});
+
+  setFormData({
+    name: "",
+    phone: "",
+    message: "",
+  });
+
     } finally {
       setLoading(false);
     }
@@ -195,6 +228,17 @@ const HeroSection = () => {
           </div>
 
         </div>
+  <AlertPopup
+  open={popup.open}
+  type={popup.type}
+  message={popup.message}
+  onClose={() =>
+    setPopup({
+      ...popup,
+      open: false,
+    })
+  }
+/>
 
       </div>
     </section>
