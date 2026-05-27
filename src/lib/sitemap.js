@@ -15,7 +15,7 @@ const currentDate =
     new Date().toISOString();
 
 export async function generateSitemap() {
-  const baseUrl = "https://www.houseforrentingurgaon.com";
+  const baseUrl = "https://www.renthouseingurgaon.com";
 
   // 🔹 Static URLs
   const staticUrls = `
@@ -71,7 +71,7 @@ export async function generateSitemap() {
     `;
   });
 
-  let blogUrls = [];
+ let blogUrls = [];
 
   try {
 

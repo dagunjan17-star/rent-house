@@ -16,7 +16,7 @@ export default function BHKFilterButtons() {
     city.toLowerCase().replace(/\s+/g, "-");
 
   const createSlug = (bhk) => {
-    return `${bhk}-bhk-house-for-rent-in-${formatCity(city)}`;
+    return `${bhk}-bhk-rent-house-in-${formatCity(city)}`;
   };
 
   return (
