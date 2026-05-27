@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import AlertPopup from "@/components/AlertPopup"
-
+import Breadcrumb from "@/components/Breadcrumb";
 export default function Page() {
 
   const [formData, setFormData] = useState({
@@ -125,7 +125,9 @@ export default function Page() {
       <section className="bg-gradient-to-b from-white to-[#F3FAEC] py-10 px-4 sm:px-6">
 
         <div className="max-w-7xl mx-auto">
-
+<div className="py-3">
+        <Breadcrumb/>
+      </div>
           {/* HEADING */}
 
           <div className="mb-16">

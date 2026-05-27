@@ -8,6 +8,9 @@ export const metadata = {
    keywords: [
   "about rent house Gurgaon", "trusted rent house platform Gurgaon", "verified house rental listings Gurgaon", "rent house expert Gurugram", "best rental service Gurgaon", "independent house rental platform Gurgaon", "no broker rent house Gurgaon", "villa rent expert Gurgaon", "furnished home rental Gurgaon", "house rental consultant Gurugram", "rental advisor Gurgaon", "2BHK 3BHK rent expert Gurgaon", "house rent agency Gurgaon", "property rental consultant Gurgaon", "Deal Acres rent house Gurgaon"
   ],
+  alternates: {
+    canonical: "https://www.renthouseingurgaon.com/about",
+  },
 };
 
 export default function Page() {

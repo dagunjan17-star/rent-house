@@ -8,6 +8,9 @@ export const metadata = {
   keywords: [
     "contact rent house Gurgaon", "house rental inquiry Gurgaon", "rent house enquiry Gurugram", "free rental consultation Gurgaon", "register rent house requirement Gurgaon", "book house visit Gurgaon", "rent house helpline Gurgaon", "rental consultant contact Gurugram", "1BHK 2BHK 3BHK house rental inquiry Gurgaon", "furnished house contact Gurgaon", "independent house rent query Gurgaon", "villa rent inquiry Gurugram", "rent house expert contact Gurgaon", "find rent house Gurgaon enquiry", "best rental home deals Gurgaon"
   ],
+  alternates: {
+    canonical: "https://www.renthouseingurgaon.com/contact",
+  },
 };
 
 export default function Page() {

@@ -1,9 +1,13 @@
+import Breadcrumb from "@/components/Breadcrumb";
 export default function RentGuideSection() {
   return (
     <section className="bg-[#F3FAEC] py-6 px-4 md:px-8">
 
       {/* MAIN TITLE */}
       <div className="max-w-6xl mx-auto">
+        <div className="py-3">
+        <Breadcrumb/>
+      </div>
         <h1 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight tracking-tight">
           Rent House in Gurgaon – Complete Guide for Tenants and Owners
         </h1>

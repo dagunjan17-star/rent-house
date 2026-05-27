@@ -9,6 +9,7 @@ import SidebarEnquiryForm from "./SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
 import BHKFilterButtons from "@/components/BHKFilterButtons";
 import ViewDetailsButton from "./ViewDetailsButton";
+import NearbyLocations from "./NearbyLocations";
 
 export default function Properties() {
   const { properties, loading, error, refetch,page2, setPage2,
@@ -99,9 +100,11 @@ export default function Properties() {
           ) : (
             <>
               {/* ✅ PROPERTY CARDS */}
-              {properties.map((property) => (
+              {properties.map((property , index) => (
                 <div
-                  key={property._id}
+                  key={property._id}>
+                <div
+                 
                   className="bg-white rounded-xl border border-[#78C841]/10 shadow-sm hover:shadow-lg transition overflow-hidden md:h-[250px]"
                 >
                   <div className="flex flex-col sm:flex-row h-full">
@@ -210,6 +213,12 @@ export default function Properties() {
                       </div>
                     </div>
                   </div>
+                  </div>
+                  {(index + 1) % 10 === 0 && (
+              <NearbyLocations
+                properties={properties.slice(index - 9, index + 1)}
+              />
+            )}
                 </div>
               ))}
 

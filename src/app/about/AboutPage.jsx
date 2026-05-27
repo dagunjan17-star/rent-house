@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-
+import Breadcrumb from "@/components/Breadcrumb";
 export default function AboutPage() {
 
   return (
@@ -10,7 +10,9 @@ export default function AboutPage() {
     <section className="bg-gradient-to-b from-white to-[#F3FAEC] px-4 py-20">
 
       <div className="max-w-7xl mx-auto">
-
+<div className="py-3">
+        <Breadcrumb/>
+      </div>
         {/* HERO */}
 
         <div className="grid md:grid-cols-2 gap-16 items-center mb-28">
