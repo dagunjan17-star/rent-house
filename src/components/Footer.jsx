@@ -57,8 +57,10 @@ export default function Footer() {
               <div key={index} className="relative group">
 
                 <Link
-                  href={`/rent-house-in-${createSlug(loc)}-gurgaon`}
-                  className="block truncate text-gray-400 hover:text-[#78C841] transition duration-200"
+key={index}
+  href={`https://www.dealacres.com/properties/rent-house-in-${createSlug(loc)}-gurgaon`}
+  target="_blank"
+  rel="noopener noreferrer"                  className="block truncate text-gray-400 hover:text-[#78C841] transition duration-200"
                 >
                   Rent House in {loc}, Gurgaon
                 </Link>
