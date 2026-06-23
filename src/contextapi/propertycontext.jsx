@@ -44,7 +44,7 @@ const [page2,setPage2]=useState(1);
   }, [page2]);
 
   /* ================= BHK FILTER ================= */
-
+const [properties2, setProperties2] = useState([]);
   const [loading3, setLoading3] = useState(false);
   const [error3, setError3] = useState(null);
 
@@ -57,10 +57,20 @@ const [page2,setPage2]=useState(1);
       setError3(null);
 
       const res = await axios.get(
-        `https://gurgaon-backend.onrender.com/api/listed-properties/getPropertiesByType/${type}/${domain}?page=${pageNumber}`
+        `https://gurgaon-backend.onrender.com/api/listed-properties/properties`,
+        {
+          params: {
+            listingType: "Sale",
+            propertyType: type,
+            subType: "House,Bedroom",
+            city: "Gurgaon",
+            page:pageNumber ,
+            limit: 150,
+          },
+        }
       );
 
-      setProperties(res.data?.data || []);
+      setProperties2(res.data?.data || []);
       setTotalPages(res.data?.totalPages || 1);
       setPage(pageNumber);
     } catch (err) {
@@ -112,16 +122,15 @@ const [page2,setPage2]=useState(1);
         properties,
         loading,
         error,
-        refetch: getPropertiesByDomain,
-           page2,setPage2,totalItems,itemsPerPage:limit,
+        page2,setPage2,totalItems,itemsPerPage:limit,
         // BHK filter
+        properties2,
         fetchPropertiesByType,
         loading3,
         error3,
         page,
         totalPages,
         setPage,
-
         // locality
         data,
         loading2,

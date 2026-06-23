@@ -20,23 +20,6 @@ export default function Properties() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const propertySectionRef = useRef(null);
-
-  
-
-  /* 🔥 Refetch on mount */
-  useEffect(() => {
-    refetch();
-  }, []);
-
-  // /* Reset page when data changes */
-  // useEffect(() => {
-  //   if (properties) {
-  //     setPage2(1);
-  //   }
-  // }, [properties]);
-
- 
-
   return (
     <section
       ref={propertySectionRef}

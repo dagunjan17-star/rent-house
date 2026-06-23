@@ -17,7 +17,7 @@ export default function PropertyTypePage() {
     const { propertyType } = useParams();
 
     const {
-        properties,
+        properties2,
         loading3,
         error3,
         fetchPropertiesByType,
@@ -71,7 +71,7 @@ export default function PropertyTypePage() {
 
     }
 
-    if (!properties || properties.length === 0) {
+    if (!properties2 || properties2.length === 0) {
 
         return (
 
@@ -127,7 +127,7 @@ export default function PropertyTypePage() {
 
                 <div className="lg:col-span-2 space-y-6">
 
-                    {properties.map((property, index) => (
+                    {properties2.map((property, index) => (
                             <div
                             key={property._id}>
                         <div
@@ -270,7 +270,7 @@ export default function PropertyTypePage() {
                            </div>
                            {(index + 1) % 10 === 0 && (
               <NearbyLocations
-                properties={properties.slice(index - 9, index + 1)}
+                properties={properties2.slice(index - 9, index + 1)}
               />
             )}
                         </div>
@@ -282,12 +282,13 @@ export default function PropertyTypePage() {
                     <div className="mt-12">
 
                         <Pagination
-                            currentPage={page}
-                            totalPages={totalPages}
-                            onPageChange={(newPage) => {
-                                fetchPropertiesByType(`${propertyType} BHK`, newPage);
-                            }}
-                        />
+  totalItems={totalPages}
+  itemsPerPage={1}
+  currentPage={page}
+  onPageChange={(newPage) => {
+    fetchPropertiesByType(`${bhk} BHK`, newPage);
+  }}
+/>
 
                     </div>
 
