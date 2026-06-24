@@ -165,10 +165,7 @@ export default function Properties() {
                         </div>
                       </div>
 
-                      {/* <p className="text-xs sm:text-sm text-gray-500 mt-3 line-clamp-2">
-                        {property.description ||
-                          "Modern rent house with great connectivity and amenities."}
-                      </p> */}
+                   
 
                       <div className="flex-1"></div>
 
@@ -187,21 +184,14 @@ export default function Properties() {
 
                       slug={property.slug}
                       href={`https://www.dealacres.com/property/${property.slug}`}/>
-                        {/* <Link
-                          href={`/properties/${property.slug}`}
-                          className="text-sm border border-[#78C841] text-[#78C841] px-4 py-2 rounded hover:bg-[#78C841] hover:text-white transition text-center"
-                        >
-                          View Rent House Details
-                        </Link> */}
+                        
                       </div>
                     </div>
                   </div>
                   </div>
-                  {(index + 1) % 10 === 0 && (
-              <NearbyLocations
-                properties={properties.slice(index - 9, index + 1)}
-              />
-            )}
+               {(index + 1) % 10 === 0 && (
+  <NearbyLocations blockIndex={Math.floor(index / 10)} />
+)}
                 </div>
               ))}
 

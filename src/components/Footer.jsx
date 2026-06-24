@@ -18,7 +18,7 @@ export default function Footer() {
 
   const [showAll, setShowAll] = useState(false);
 
-  const initialCount = 50;
+  const initialCount = 14;
 
   const visibleLocations = showAll
     ? locations
@@ -50,7 +50,7 @@ export default function Footer() {
             Popular Rent House Locations
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-4 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
 
             {visibleLocations.map((loc, index) => (
 
@@ -78,6 +78,302 @@ key={index}
                   pointer-events-none">
 
                   Rent House in {loc}, Gurgaon
+
+                </div>
+
+              </div>
+
+            ))}
+
+            {!showAll && locations.length > initialCount && (
+
+              <div>
+
+                <span
+                  onClick={() => setShowAll(true)}
+                  className="block cursor-pointer text-[#78C841] hover:underline"
+                >
+                  Read More...
+                </span>
+
+              </div>
+
+            )}
+
+            {showAll && locations.length > initialCount && (
+
+              <div>
+
+                <span
+                  onClick={() => setShowAll(false)}
+                  className="block cursor-pointer text-[#78C841] hover:underline"
+                >
+                  Read Less...
+                </span>
+
+              </div>
+
+            )}
+
+          </div>
+
+        </div>
+        <div className="mb-10">
+
+          <h3 className="text-lg font-semibold text-white mb-6">
+            Popular 1 BHK Rent House Locations
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
+
+            {visibleLocations.map((loc, index) => (
+
+              <div key={index} className="relative group">
+
+                <Link
+key={index}
+  href={`https://www.dealacres.com/properties/1-bhk-rent-house-in-${createSlug(loc)}-gurgaon`}
+  target="_blank"
+  rel="noopener noreferrer"                  className="block truncate text-gray-400 hover:text-[#78C841] transition duration-200"
+                >
+                 1 BHK Rent House in {loc}, Gurgaon
+                </Link>
+
+                <div className="
+                  absolute left-1/2 -translate-x-1/2 bottom-full mb-2
+                  opacity-0 scale-95
+                  group-hover:opacity-100 group-hover:scale-100
+                  transition-all duration-200
+                  whitespace-nowrap
+                  bg-[#111827] text-white text-xs
+                  px-3 py-1.5 rounded-md
+                  shadow-lg border border-[#78C841]/40
+                  z-[9999]
+                  pointer-events-none">
+
+                 1 BHK Rent House in {loc}, Gurgaon
+
+                </div>
+
+              </div>
+
+            ))}
+
+            {!showAll && locations.length > initialCount && (
+
+              <div>
+
+                <span
+                  onClick={() => setShowAll(true)}
+                  className="block cursor-pointer text-[#78C841] hover:underline"
+                >
+                  Read More...
+                </span>
+
+              </div>
+
+            )}
+
+            {showAll && locations.length > initialCount && (
+
+              <div>
+
+                <span
+                  onClick={() => setShowAll(false)}
+                  className="block cursor-pointer text-[#78C841] hover:underline"
+                >
+                  Read Less...
+                </span>
+
+              </div>
+
+            )}
+
+          </div>
+
+        </div>
+        <div className="mb-10">
+
+          <h3 className="text-lg font-semibold text-white mb-6">
+            Popular 2 BHK Rent House Locations
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
+
+            {visibleLocations.map((loc, index) => (
+
+              <div key={index} className="relative group">
+
+                <Link
+key={index}
+  href={`https://www.dealacres.com/properties/2-bhk-rent-house-in-${createSlug(loc)}-gurgaon`}
+  target="_blank"
+  rel="noopener noreferrer"                  className="block truncate text-gray-400 hover:text-[#78C841] transition duration-200"
+                >
+                 2 BHK Rent House in {loc}, Gurgaon
+                </Link>
+
+                <div className="
+                  absolute left-1/2 -translate-x-1/2 bottom-full mb-2
+                  opacity-0 scale-95
+                  group-hover:opacity-100 group-hover:scale-100
+                  transition-all duration-200
+                  whitespace-nowrap
+                  bg-[#111827] text-white text-xs
+                  px-3 py-1.5 rounded-md
+                  shadow-lg border border-[#78C841]/40
+                  z-[9999]
+                  pointer-events-none">
+
+                 2 BHK Rent House in {loc}, Gurgaon
+
+                </div>
+
+              </div>
+
+            ))}
+
+            {!showAll && locations.length > initialCount && (
+
+              <div>
+
+                <span
+                  onClick={() => setShowAll(true)}
+                  className="block cursor-pointer text-[#78C841] hover:underline"
+                >
+                  Read More...
+                </span>
+
+              </div>
+
+            )}
+
+            {showAll && locations.length > initialCount && (
+
+              <div>
+
+                <span
+                  onClick={() => setShowAll(false)}
+                  className="block cursor-pointer text-[#78C841] hover:underline"
+                >
+                  Read Less...
+                </span>
+
+              </div>
+
+            )}
+
+          </div>
+
+        </div>
+        <div className="mb-10">
+
+          <h3 className="text-lg font-semibold text-white mb-6">
+            Popular 3 BHK Rent House Locations
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
+
+            {visibleLocations.map((loc, index) => (
+
+              <div key={index} className="relative group">
+
+                <Link
+key={index}
+  href={`https://www.dealacres.com/properties/3-bhk-rent-house-in-${createSlug(loc)}-gurgaon`}
+  target="_blank"
+  rel="noopener noreferrer"                  className="block truncate text-gray-400 hover:text-[#78C841] transition duration-200"
+                >
+                 3 BHK Rent House in {loc}, Gurgaon
+                </Link>
+
+                <div className="
+                  absolute left-1/2 -translate-x-1/2 bottom-full mb-2
+                  opacity-0 scale-95
+                  group-hover:opacity-100 group-hover:scale-100
+                  transition-all duration-200
+                  whitespace-nowrap
+                  bg-[#111827] text-white text-xs
+                  px-3 py-1.5 rounded-md
+                  shadow-lg border border-[#78C841]/40
+                  z-[9999]
+                  pointer-events-none">
+
+                 3 BHK Rent House in {loc}, Gurgaon
+
+                </div>
+
+              </div>
+
+            ))}
+
+            {!showAll && locations.length > initialCount && (
+
+              <div>
+
+                <span
+                  onClick={() => setShowAll(true)}
+                  className="block cursor-pointer text-[#78C841] hover:underline"
+                >
+                  Read More...
+                </span>
+
+              </div>
+
+            )}
+
+            {showAll && locations.length > initialCount && (
+
+              <div>
+
+                <span
+                  onClick={() => setShowAll(false)}
+                  className="block cursor-pointer text-[#78C841] hover:underline"
+                >
+                  Read Less...
+                </span>
+
+              </div>
+
+            )}
+
+          </div>
+
+        </div>
+        <div className="mb-10">
+
+          <h3 className="text-lg font-semibold text-white mb-6">
+            Popular 4 BHK Rent House Locations
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
+
+            {visibleLocations.map((loc, index) => (
+
+              <div key={index} className="relative group">
+
+                <Link
+key={index}
+  href={`https://www.dealacres.com/properties/4-bhk-rent-house-in-${createSlug(loc)}-gurgaon`}
+  target="_blank"
+  rel="noopener noreferrer"                  className="block truncate text-gray-400 hover:text-[#78C841] transition duration-200"
+                >
+                 4 BHK Rent House in {loc}, Gurgaon
+                </Link>
+
+                <div className="
+                  absolute left-1/2 -translate-x-1/2 bottom-full mb-2
+                  opacity-0 scale-95
+                  group-hover:opacity-100 group-hover:scale-100
+                  transition-all duration-200
+                  whitespace-nowrap
+                  bg-[#111827] text-white text-xs
+                  px-3 py-1.5 rounded-md
+                  shadow-lg border border-[#78C841]/40
+                  z-[9999]
+                  pointer-events-none">
+
+                 4 BHK Rent House in {loc}, Gurgaon
 
                 </div>
 
