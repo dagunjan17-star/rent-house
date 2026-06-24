@@ -5,6 +5,7 @@ import { PropertyProvider } from "@/contextapi/propertycontext"; // ✅ ADD THIS
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { BlogProvider } from "@/contextapi/BlogContext";
+import { LocalityProvider } from "@/contextapi/LocalityContext";
 
 import Script from "next/script";
 const geistSans = Geist({
@@ -96,11 +97,12 @@ export default function RootLayout({ children }) {
         {/* ✅ Providers */}
         <PropertyProvider>
           <BlogProvider>
+            <LocalityProvider>
             <Navbar />
             {children}
             <ScrollToTop />
             <Footer />
-          
+          </LocalityProvider>
           </BlogProvider>
         </PropertyProvider>
       </body>

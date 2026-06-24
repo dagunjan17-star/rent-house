@@ -16,14 +16,33 @@ const createSlug = (location) => {
 
 export default function Footer() {
 
-  const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState({
+  house: false,
+  bhk1: false,
+  bhk2: false,
+  bhk3: false,
+  bhk4: false,
+});
 
-  const initialCount = 14;
+const initialCount = 14;
 
-  const visibleLocations = showAll
+const getVisibleLocations = (key) => {
+  return showAll[key]
     ? locations
     : locations.slice(0, initialCount);
+};
 
+const toggleShowAll = (key) => {
+  setShowAll((prev) => ({
+    ...prev,
+    [key]: !prev[key],
+  }));
+};
+const houseLocations = getVisibleLocations("house");
+const bhk1Locations = getVisibleLocations("bhk1");
+const bhk2Locations = getVisibleLocations("bhk2");
+const bhk3Locations = getVisibleLocations("bhk3");
+const bhk4Locations = getVisibleLocations("bhk4");
   return (
     <footer className="bg-[#0F0617] pt-16 pb-8 px-4 border-t border-[#1F3D12]">
 
@@ -52,7 +71,7 @@ export default function Footer() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
 
-            {visibleLocations.map((loc, index) => (
+            {houseLocations.map((loc, index) => (
 
               <div key={index} className="relative group">
 
@@ -85,22 +104,21 @@ key={index}
 
             ))}
 
-            {!showAll && locations.length > initialCount && (
+             {locations.length > initialCount && (
 
               <div>
-
-                <span
-                  onClick={() => setShowAll(true)}
-                  className="block cursor-pointer text-[#78C841] hover:underline"
-                >
-                  Read More...
-                </span>
+<span
+  onClick={() => toggleShowAll("house")}
+  className="block cursor-pointer text-[#78C841] hover:underline"
+>
+  {showAll.house ? "View Less..." : "View More..."}
+</span>
 
               </div>
 
             )}
 
-            {showAll && locations.length > initialCount && (
+            {/* {showAll && locations.length > initialCount && (
 
               <div>
 
@@ -113,7 +131,7 @@ key={index}
 
               </div>
 
-            )}
+            )} */}
 
           </div>
 
@@ -126,7 +144,7 @@ key={index}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
 
-            {visibleLocations.map((loc, index) => (
+            {bhk1Locations.map((loc, index) => (
 
               <div key={index} className="relative group">
 
@@ -159,22 +177,21 @@ key={index}
 
             ))}
 
-            {!showAll && locations.length > initialCount && (
+             {locations.length > initialCount && (
 
               <div>
-
-                <span
-                  onClick={() => setShowAll(true)}
-                  className="block cursor-pointer text-[#78C841] hover:underline"
-                >
-                  Read More...
-                </span>
+<span
+  onClick={() => toggleShowAll("bhk1")}
+  className="block cursor-pointer text-[#78C841] hover:underline"
+>
+  {showAll.bhk1 ? "View Less..." : "View More..."}
+</span>
 
               </div>
 
             )}
 
-            {showAll && locations.length > initialCount && (
+            {/* {showAll && locations.length > initialCount && (
 
               <div>
 
@@ -187,7 +204,7 @@ key={index}
 
               </div>
 
-            )}
+            )} */}
 
           </div>
 
@@ -200,7 +217,7 @@ key={index}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
 
-            {visibleLocations.map((loc, index) => (
+            {bhk2Locations.map((loc, index) => (
 
               <div key={index} className="relative group">
 
@@ -233,22 +250,21 @@ key={index}
 
             ))}
 
-            {!showAll && locations.length > initialCount && (
+             {locations.length > initialCount && (
 
               <div>
-
-                <span
-                  onClick={() => setShowAll(true)}
-                  className="block cursor-pointer text-[#78C841] hover:underline"
-                >
-                  Read More...
-                </span>
+<span
+  onClick={() => toggleShowAll("bhk2")}
+  className="block cursor-pointer text-[#78C841] hover:underline"
+>
+  {showAll.bhk2 ? "View Less..." : "View More..."}
+</span>
 
               </div>
 
             )}
 
-            {showAll && locations.length > initialCount && (
+            {/* {showAll && locations.length > initialCount && (
 
               <div>
 
@@ -261,7 +277,7 @@ key={index}
 
               </div>
 
-            )}
+            )} */}
 
           </div>
 
@@ -274,7 +290,7 @@ key={index}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
 
-            {visibleLocations.map((loc, index) => (
+            {bhk3Locations.map((loc, index) => (
 
               <div key={index} className="relative group">
 
@@ -307,22 +323,21 @@ key={index}
 
             ))}
 
-            {!showAll && locations.length > initialCount && (
+             {locations.length > initialCount && (
 
               <div>
-
-                <span
-                  onClick={() => setShowAll(true)}
-                  className="block cursor-pointer text-[#78C841] hover:underline"
-                >
-                  Read More...
-                </span>
+<span
+  onClick={() => toggleShowAll("bhk3")}
+  className="block cursor-pointer text-[#78C841] hover:underline"
+>
+  {showAll.bhk3 ? "View Less..." : "View More..."}
+</span>
 
               </div>
 
             )}
 
-            {showAll && locations.length > initialCount && (
+            {/* {showAll && locations.length > initialCount && (
 
               <div>
 
@@ -335,7 +350,7 @@ key={index}
 
               </div>
 
-            )}
+            )} */}
 
           </div>
 
@@ -348,7 +363,7 @@ key={index}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-x-6 gap-y-4 text-sm">
 
-            {visibleLocations.map((loc, index) => (
+            {bhk4Locations.map((loc, index) => (
 
               <div key={index} className="relative group">
 
@@ -381,22 +396,22 @@ key={index}
 
             ))}
 
-            {!showAll && locations.length > initialCount && (
+             {locations.length > initialCount && (
 
               <div>
 
-                <span
-                  onClick={() => setShowAll(true)}
-                  className="block cursor-pointer text-[#78C841] hover:underline"
-                >
-                  Read More...
-                </span>
+               <span
+  onClick={() => toggleShowAll("bhk4")}
+  className="block cursor-pointer text-[#78C841] hover:underline"
+>
+  {showAll.bhk4 ? "View Less..." : "View More..."}
+</span>
 
               </div>
 
             )}
 
-            {showAll && locations.length > initialCount && (
+            {/* {showAll && locations.length > initialCount && (
 
               <div>
 
@@ -409,7 +424,7 @@ key={index}
 
               </div>
 
-            )}
+            )} */}
 
           </div>
 
