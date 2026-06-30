@@ -7,109 +7,90 @@ import Link from "next/link";
 import ContactPopup from "@/components/ContactPopup";
 import SidebarEnquiryForm from "./SidebarEnquiryForm";
 import Pagination from "@/components/Pagination";
-import BHKFilterButtons from "@/components/BHKFilterButtons";
 import ViewDetailsButton from "./ViewDetailsButton";
 import NearbyLocations from "./NearbyLocations";
+import BHKFilterButtons from "@/components/BHKFilterButtons";
+// 👉 Hook import kiya
+import { useClickLimit } from "@/hooks/useClickLimit";
 
 export default function Properties() {
-  const { properties, loading, error, refetch,page2, setPage2,
-    totalItems, itemsPerPage, } = useProperty();
-
+  const { properties, loading, error, page2, setPage2, totalItems, itemsPerPage } = useProperty();
   const [open, setOpen] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  
+  // 👉 Hook initialize kiya
+  const { handlePropertyClick } = useClickLimit();
 
   const propertySectionRef = useRef(null);
-  return (
-    <section
-      ref={propertySectionRef}
-      className="bg-[#F3FAEC] px-4 py-12 sm:py-16"
-    >
-      {/* ================= HEADING ================= */}
-      <div className="max-w-7xl mx-auto mb-10">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">
-          Rent House in Gurgaon
-        </h2>
 
-        <p className="mt-3 text-gray-500 text-sm sm:text-base max-w-2xl">
-          Explore premium rent houses in prime sectors of Gurgaon.
-          Affordable 1BHK, 2BHK & 3BHK homes available.
+  /* ================= LOADING ================= */
+  if (loading) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center bg-gradient-to-b from-white to-[#F3FAEC]">
+        <div className="relative w-14 h-14">
+          <div className="absolute inset-0 rounded-full border-4 border-[#78C841]/20"></div>
+          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#78C841] border-r-[#5e9e32] animate-spin"></div>
+        </div>
+        <p className="mt-5 text-sm font-medium text-gray-600 tracking-wide">
+          Loading House Listings...
         </p>
+      </div>
+    );
+  }
 
+  if (error) {
+    return <p className="text-center py-20 text-red-500">Something went wrong while loading properties.</p>;
+  }
+
+  if (!properties || properties.length === 0) {
+    return (
+      <div className="text-center py-20">
+        <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">No Rent Houses Available in Gurgaon</h2>
+        <p className="text-gray-500 mt-2 text-sm">New rental listings will be updated soon.</p>
+      </div>
+    );
+  }
+
+  return (
+    <section ref={propertySectionRef} className="bg-[#F3FAEC] px-4 py-12 sm:py-16">
+      {/* HEADING */}
+      <div className="max-w-7xl mx-auto mb-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Rent House in Gurgaon</h2>
+        <p className="mt-3 text-gray-500 text-sm sm:text-base max-w-2xl">
+          Explore premium rent houses in prime sectors of Gurgaon. Affordable 1BHK, 2BHK & 3BHK homes available.
+        </p>
         <div className="w-16 h-1 bg-[#78C841] mt-5 rounded-full"></div>
+            <div className="mt-6">
 
-        <div className="mt-6">
           <BHKFilterButtons />
+
         </div>
       </div>
-
-      {/* ================= MAIN GRID ================= */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        {/* ================= LEFT LIST ================= */}
+        {/* LEFT LIST */}
         <div className="lg:col-span-2 space-y-6">
+          {properties.map((property, index) => {
+            const typeSlug = property.propertyType
+              ? property.propertyType.toLowerCase().trim().replace(/[\s\W-]+/g, '-')
+              : "house";
 
-          {/* ❌ ERROR */}
-          {error && (
-            <p className="text-center py-20 text-red-500">
-              Something went wrong while loading properties.
-            </p>
-          )}
-
-          {/* 🔥 LOADING (ONLY CARDS AREA) */}
-          {loading ? (
-            <div className="grid gap-6">
-              {[...Array(6)].map((_, i) => (
-                <div
-                  key={i}
-                  className="bg-white rounded-xl border p-4 animate-pulse"
-                >
-                  <div className="h-40 bg-gray-200 rounded mb-3"></div>
-                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                  <div className="h-3 bg-gray-200 rounded w-1/2"></div>
-                </div>
-              ))}
-            </div>
-          ) :properties.length === 0 ? (
-            /* ❌ NO DATA */
-            <div className="text-center py-20">
-              <h2 className="text-xl sm:text-2xl font-semibold text-gray-800">
-                No Rent Houses Available in Gurgaon
-              </h2>
-              <p className="text-gray-500 mt-2 text-sm">
-                New rental listings will be updated soon.
-              </p>
-            </div>
-          ) : (
-            <>
-              {/* ✅ PROPERTY CARDS */}
-              {properties.map((property , index) => (
-                <div
-                  key={property._id}>
-                <div
-                 
-                  className="bg-white rounded-xl border border-[#78C841]/10 shadow-sm hover:shadow-lg transition overflow-hidden md:h-[250px]"
-                >
+            return (
+              <div key={property._id}>
+                <div className="bg-white rounded-xl border border-[#78C841]/10 shadow-sm hover:shadow-lg transition overflow-hidden md:h-[280px]">
                   <div className="flex flex-col sm:flex-row h-full">
-                    
                     {/* IMAGE */}
                     <div className="relative sm:w-[40%]">
                       <Image
-                        src={property?.media?.url 
-                          ? property?.media?.url
-                      : "https://res.cloudinary.com/dbihlu2ve/image/upload/v1778830993/GurgaonProperties/fls3swkw4k5bdcjf40y5.webp"}
+                        src={property?.media?.url || "https://res.cloudinary.com/dbihlu2ve/image/upload/v1778830993/GurgaonProperties/fls3swkw4k5bdcjf40y5.webp"}
                         unoptimized
                         alt={property.title}
                         width={600}
                         height={400}
                         className="w-full h-48 sm:h-full object-cover"
                       />
-
                       <span
-                        onClick={() => {
-                          setSelectedProperty(property.title);
-                          setOpen(true);
-                        }}
+                        onClick={() => { setSelectedProperty(property.title); setOpen(true); }}
                         className="absolute top-3 left-3 bg-[#78C841] text-white text-xs px-3 py-1 rounded cursor-pointer"
                       >
                         {property.propertyType}
@@ -118,11 +99,8 @@ export default function Properties() {
 
                     {/* CONTENT */}
                     <div className="p-4 sm:p-5 flex-1 flex flex-col">
-                      <h2 className="text-base sm:text-lg font-semibold text-gray-900">
-                        {property.title}
-                      </h2>
-
-                      <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
+                      <h2 className="text-base sm:text-lg font-semibold text-gray-900">{property.title}</h2>
+                                          <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="w-4 h-4 text-gray-400"
@@ -146,31 +124,16 @@ export default function Properties() {
   {property.locality}
 </p>
 
-                      {/* INFO BAR */}
-                      <div className="mt-3 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 flex items-center justify-between text-xs sm:text-sm">
-                        <div>
-                          <span className="text-gray-400">Type : </span>
-                          <span className="font-semibold text-gray-800">
-                            {property.propertyCategory}
-                          </span>
-                        </div>
-
+                      <div className="mt-3 bg-gray-50 border border-gray-200 rounded-lg px-4 py-2 flex items-center justify-between text-xs sm:text-sm text-gray-800">
+                        <p>Type : <span className="font-semibold text-gray-800">{property.propertyCategory}</span></p>
                         <div className="h-6 w-px bg-gray-200"></div>
-
-                        <div>
-                          <span className="text-gray-400">Status : </span>
-                          <span className="font-semibold text-[#78C841]">
-                            {property.status || "Available"}
-                          </span>
-                        </div>
+                        <p>Status : <span className="font-semibold text-[#78C841]">{property.status || "Available"}</span></p>
                       </div>
 
-                   
-
-                      <div className="flex-1"></div>
+                      <div className="flex-1" />
 
                       {/* BUTTONS */}
-                      <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                    <div className="flex flex-col md:flex-row gap-3 mt-2">
                         <button
                           onClick={() => {
                             setSelectedProperty(property.title);
@@ -186,54 +149,36 @@ export default function Properties() {
                       href={`https://www.dealacres.com/property/${property.slug}`}/>
                         
                       </div>
+
+                      {/* EXPLORE MORE LINKS */}
+                      <div className="border-t border-gray-200 mt-4 pt-4 flex justify-between items-center text-sm text-gray-500 font-medium">
+                        <Link href={`https://www.dealacres.com/properties/${typeSlug}-for-rent-in-gurgaon`} target="_blank" onClick={handlePropertyClick} className="group text-left flex items-center gap-1">
+                          <h4 className="font-semibold text-gray-700 group-hover:text-[#78C841] transition-colors underline-offset-2 hover:underline">Explore more</h4>
+                          <span className="text-[#78C841] group-hover:translate-x-1 transition-transform duration-300">→</span>
+                        </Link>
+                        <div className="h-5 w-px bg-gray-300 mx-3"></div>
+                        <Link href="https://www.dealacres.com/sell-property" target="_blank" className="group text-right flex items-center gap-1">
+                          <h4 className="font-semibold text-gray-700 group-hover:text-[#78C841] transition-colors underline-offset-2 hover:underline">Free Sell Property</h4>
+                          <span className="text-[#78C841] group-hover:translate-x-1 transition-transform duration-300">→</span>
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                  </div>
-               {(index + 1) % 10 === 0 && (
-  <NearbyLocations blockIndex={Math.floor(index / 10)} />
-)}
                 </div>
-              ))}
-
-              {/* ✅ PAGINATION */}
-              {totalItems > itemsPerPage && (
-                <div className="mt-12" key={totalItems}>
-                  <Pagination
-                    key={totalItems + "-" + page2}
-                    totalItems={totalItems}
-                    itemsPerPage={itemsPerPage}
-                    currentPage={page2}
-                    onPageChange={(page2) => {
-                      setPage2(page2);
-
-                      const yOffset = -90;
-                      const y =
-                        propertySectionRef.current.getBoundingClientRect()
-                          .top +
-                        window.pageYOffset +
-                        yOffset;
-
-                      window.scrollTo({ top: y, behavior: "smooth" });
-                    }}
-                  />
-                </div>
-              )}
-            </>
-          )}
+                {(index + 1) % 10 === 0 && <NearbyLocations blockIndex={Math.floor(index / 10)} />}
+              </div>
+            );
+          })}
+          
+          <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={page2} onPageChange={(p) => { setPage2(p); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
         </div>
 
-        {/* ================= SIDEBAR ================= */}
+        {/* SIDEBAR */}
         <div className="lg:col-span-1 sticky top-28">
           <SidebarEnquiryForm />
         </div>
       </div>
-
-      {/* ================= POPUP ================= */}
-      <ContactPopup
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        propertyTitle={selectedProperty}
-      />
+      <ContactPopup isOpen={open} onClose={() => setOpen(false)} propertyTitle={selectedProperty} />
     </section>
   );
 }
