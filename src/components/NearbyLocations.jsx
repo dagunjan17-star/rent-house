@@ -152,7 +152,7 @@ if (
               key={item._id}
                   onClick={() =>
                     window.open(
-                      `https://www.dealacres.com/properties/rent-house-in-${item.slug}`,
+                      `https://www.dealacres.com/properties/rent-house-in-gurgaon`,
                       "_blank"
                     )
                   }
